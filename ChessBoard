@@ -1,0 +1,5 @@
+public class Chessboard{
+  private final int SIZE = 8;
+  private int[][] boardPlaces = new int[SIZE][SIZE];
+  public Chessboard(){ }
+}
