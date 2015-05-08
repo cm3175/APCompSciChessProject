@@ -1,5 +1,6 @@
 public class Chessboard{
-  private final int SIZE = 8;
-  private int[][] boardPlaces = new int[SIZE][SIZE];
-  public Chessboard(){ }
+  private final int SIZE = 64;
+  List<CoordinatePair> boardPlaces = new List<CoordinatePair>(SIZE);
+  public Chessboard(){
+    for(}
 }
