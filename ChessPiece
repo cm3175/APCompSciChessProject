@@ -1,4 +1,6 @@
 public interface ChessPiece{
   CoordinatePair position;
   public void move(int x, int y);
+  public void attack(int x, int y);
+  public void destroy();
 }
