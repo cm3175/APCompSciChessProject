@@ -1,0 +1,7 @@
+public class Rook implements ChessPiece{
+  CoordinatePair pair;
+  public Rook(int x, int y){pair = new CoordinatePair(x, y);}
+  public void move(CoordinatePair p){}
+  public void attack(CoordinatePair p){}
+  public void destroy(){}
+}
