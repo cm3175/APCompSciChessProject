@@ -1,4 +1,5 @@
 public class Pawn implements ChessPiece{
+  CoordinatePair pair;
   public Pawn(int x, int y){pair = new CoordinatePair(x, y);}
   public void move(CoordinatePair p){}
   public void attack(CoordinatePair p){}
