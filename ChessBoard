@@ -2,5 +2,18 @@ public class Chessboard{
   private final int SIZE = 64;
   List<CoordinatePair> boardPlaces = new List<CoordinatePair>(SIZE);
   public Chessboard(){
-    for(}
+    int count = 0;
+    int x = 0;
+    int y = 0;
+    for(CoordinatePair pair : boardPlaces){
+      CoordinatePair newPair = new CoordinatePair(x, y);
+      boardPlaces.set(count, newPair);
+      count++;
+      x++;
+      if(!(x<8)){
+        x = 0;
+        y++;
+      }
+    }
+  }
 }
