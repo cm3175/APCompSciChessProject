@@ -89,6 +89,18 @@ public class MainDriver
     		else
     			System.out.println("Unknown Command");
     	}
+    	//check for piece on top of another
+
+    	for(int w = 0; w < 16; w++)
+    	{
+    		for(int b = 0; b < 16; b++)
+    		{
+    			if(white.get(w).pos.getPos().equals(black.get(b).pos.getPos()))
+    			{
+    				black.get(b).destroy();
+    			}
+    		}
+    	}
     	input = "";
     	//black turn
     	{
@@ -143,6 +155,16 @@ public class MainDriver
     		}
     		else
     			System.out.println("Unknown Command");
+    	}
+    	for(int b = 0; b < 16; b++)
+    	{
+    		for(int w = 0; w < 16; w++)
+    		{
+    			if(black.get(b).pos.getPos().equals(white.get(w).pos.getPos()))
+    			{
+    				white.get(w).destroy();
+    			}
+    		}
     	}
     }
   }
