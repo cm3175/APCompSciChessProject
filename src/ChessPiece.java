@@ -3,10 +3,12 @@ public class ChessPiece
 {
 	private int team;
 	protected CoordinatePair pos;
-	public ChessPiece(int x, int y, int t)
+	protected int num;
+	public ChessPiece(int x, int y, int t, int n)
 	{
 		pos = new CoordinatePair(x, y);
-		this.team = t;
+		team = t;
+		num = n;
 	}
 	public String move(CoordinatePair p)
 	{

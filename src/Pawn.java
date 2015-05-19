@@ -1,6 +1,7 @@
+import java.util.Random;
+
 public class Pawn extends ChessPiece
 {
-	CoordinatePair pair;
 	private final String NAME = "Pawn";
 	public Pawn(int x, int y, int t)
 	{
@@ -20,9 +21,14 @@ public class Pawn extends ChessPiece
 		}
 		else
 		{
-			return "YOU CANNOT MOVE THAT WAY!";
+			return "IMPROPER MOVMENT!";
 		}
 	}
-	public void destroy(){}
+	public void destroy()
+	{
+		Random r = new Random();
+		pos.x = r.nextInt()*-10;
+		pos.y = r.nextInt()*-10;
+	}
 	public void promote(){}
 }
