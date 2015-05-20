@@ -1,9 +1,0 @@
-public class King implements ChessPiece{
-  private CoordinatePair pair;
-  public King(int x, int y){pair = new CooordinatePair(x,y);}
-  public void move(int x, int y){}
-  public void attack(int x, int y){}
-  public void destroy(){}
-  public void isInCheck(){}
-  public void isInCheckmate(){}
-}
