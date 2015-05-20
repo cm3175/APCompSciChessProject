@@ -1,7 +1,0 @@
-public class Bishop implements ChessPiece{
-  private CoordinatePair pair;
-  public Bishop(int x, int y){pair = new CoordinatePair(x,y);}
-  public void move(int x, int y){}
-  public void attack(int x, int y){}
-  public void destroy(){}
-}
