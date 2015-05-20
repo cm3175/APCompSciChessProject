@@ -1,7 +1,0 @@
-public class Queen implements ChessPiece{
-  private CoordinatePair pair;
-  public Queen(int x, int y){pair = new CoordinatePair(x,y);}
-  public void move(int x, int y){}
-  public void attack(int x, int y){}
-  public void destroy(){}
-}
