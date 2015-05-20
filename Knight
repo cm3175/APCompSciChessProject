@@ -1,7 +1,0 @@
-public class Knight implements ChessPiece{
-  private CoordinatePair pair;
-  public Kinght(int x, int y){pair = new CoordinatePair(x, y);}
-  public void move(CoordinatePair p){pair = p}
-  public void attack(CoordinatePair p){}
-  public void destroy(){}
-}
