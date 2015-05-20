@@ -3,24 +3,26 @@ import java.util.Random;
 
 public class King extends ChessPiece
 {
-	private final String NAME = "King";
-	public King(int x, int y, int t)
+	public King(int x, int y, int t, int n)
 	{
-		super(x,y,t);
+		super(x,y,t,n,"King");
 	}
 	public void destroy(){
 		Random r = new Random();
 		pos.x = r.nextInt()*-10;
 		pos.y = r.nextInt()*-10;}
-	public boolean isInCheck(ChessPiece c)
+	public boolean isInCheck(ArrayList<ChessPiece> a)
 	{
-		CoordinatePair p = c.pos;
-		if(c.move(this.pos) == "IMPROPER MOVMENT!")
+		for(int x = 0; x < a.size() - 1; x++)
 		{
-			c.pos = p;
-			return false;
+			CoordinatePair p = a.get(x).pos;
+			if(a.get(x).move(this.pos) == "IMPROPER MOVMENT!")
+			{
+				a.get(x).pos = p;
+				return false;
+			}
 		}
-		return true;
+		return false;
 	}
 	public boolean isInCheckmate(ArrayList<ChessPiece> a)
 	{
@@ -86,42 +88,42 @@ public class King extends ChessPiece
 		if(this.pos.getX() + 1 == p.getX() && this.pos.getY() == p.getY())
 		{
 			super.pos = p;
-			return NAME + " to " + pos.getPos();
+			return getName() + " to " + pos.getPos();
 		}
 		else if(this.pos.getX() -1 == p.getX() && this.pos.getY() == p.getY())
 		{
 			super.pos = p;
-			return NAME + " to " + pos.getPos();
+			return getName() + " to " + pos.getPos();
 		}
 		else if(this.pos.getY() + 1 == p.getY() && this.pos.getX() == p.getX())
 		{
 			super.pos = p;
-			return NAME + " to " + pos.getPos();
+			return getName() + " to " + pos.getPos();
 		}
 		else if(this.pos.getY() - 1 == p.getY() && this.pos.getX() == p.getX())
 		{
 			super.pos = p;
-			return NAME + " to " + pos.getPos();
+			return getName() + " to " + pos.getPos();
 		}
 		else if(this.pos.getY() + 1 == p.getY() && this.pos.getX() + 1== p.getX())
 		{
 			super.pos = p;
-			return NAME + " to " + pos.getPos();
+			return getName() + " to " + pos.getPos();
 		}
 		else if(this.pos.getY() - 1 == p.getY() && this.pos.getX() + 1== p.getX())
 		{
 			super.pos = p;
-			return NAME + " to " + pos.getPos();
+			return getName() + " to " + pos.getPos();
 		}
 		else if(this.pos.getY() + 1 == p.getY() && this.pos.getX() - 1== p.getX())
 		{
 			super.pos = p;
-			return NAME + " to " + pos.getPos();
+			return getName() + " to " + pos.getPos();
 		}
 		else if(this.pos.getY() - 1 == p.getY() && this.pos.getX() - 1== p.getX())
 		{
 			super.pos = p;
-			return NAME + " to " + pos.getPos();
+			return getName() + " to " + pos.getPos();
 		}
 		else
 		{

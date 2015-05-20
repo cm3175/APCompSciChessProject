@@ -1,9 +1,5 @@
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
 
 public class MainDriver
 {
@@ -12,192 +8,418 @@ public class MainDriver
 		ArrayList<ChessPiece> black = new ArrayList<ChessPiece>();// black team initialized
 		ArrayList<ChessPiece> white = new ArrayList<ChessPiece>();// white team initialized
     
-		white.add(0, new King(0, 4, 0));//initialization of white pieces
-		white.add(1, new Queen(0, 3, 0));
-		white.add(2, new Bishop(0, 5, 0));
-		white.add(3, new Bishop(0, 2, 0));
-		white.add(4, new Knight(0, 6, 0));
-		white.add(5, new Knight(0, 1, 0));
-		white.add(6, new Rook(0, 7, 0));
-		white.add(7, new Rook(0, 0, 0));
-		white.add(8, new Pawn(1, 4, 0));
-		white.add(9, new Pawn(1, 3, 0));
-		white.add(10, new Pawn(1, 5, 0));
-		white.add(11, new Pawn(1, 2, 0));
-		white.add(12, new Pawn(1, 6, 0));
-		white.add(13, new Pawn(1, 1, 0));
-		white.add(14, new Pawn(1, 7, 0));
-		white.add(15, new Pawn(1, 0, 0));
+		white.add(0, new King(0, 4, 0, 1));//initialization of white pieces
+		white.add(1, new Queen(0, 3, 0, 1));
+		white.add(2, new Bishop(0, 5, 0, 1));
+		white.add(3, new Bishop(0, 2, 0, 2));
+		white.add(4, new Knight(0, 6, 0, 1));
+		white.add(5, new Knight(0, 1, 0, 2));
+		white.add(6, new Rook(0, 7, 0, 1));
+		white.add(7, new Rook(0, 0, 0, 2));
+		white.add(8, new Pawn(1, 4, 0, 1));
+		white.add(9, new Pawn(1, 3, 0, 2));
+		white.add(10, new Pawn(1, 5, 0, 3));
+		white.add(11, new Pawn(1, 2, 0, 4));
+		white.add(12, new Pawn(1, 6, 0, 5));
+		white.add(13, new Pawn(1, 1, 0, 6));
+		white.add(14, new Pawn(1, 7, 0, 7));
+		white.add(15, new Pawn(1, 0, 0, 8));
     
-		black.add(0, new King(8, 4, 1));// initialization of black pieces
-		black.add(1, new Queen(8, 3, 1));
-		black.add(2, new Bishop(8, 5, 1));
-		black.add(3, new Bishop(8, 2, 1));
-		black.add(4, new Knight(8, 6, 1));
-		black.add(5, new Knight(8, 1, 1));
-		black.add(6, new Rook(8, 7, 1));
-		black.add(7, new Rook(8, 0, 1));
-		black.add(8, new Pawn(7, 4, 1));
-		black.add(9, new Pawn(7, 3, 1));
-		black.add(10, new Pawn(7, 5, 1));
-		black.add(11, new Pawn(7, 2, 1));
-		black.add(12, new Pawn(7, 6, 1));
-		black.add(13, new Pawn(7, 1, 1));
-		black.add(14, new Pawn(7, 7, 1));
-		black.add(15, new Pawn(7, 0, 1));
-
-		// FRAME
-		JFrame frame = new JFrame("BOARD");
-			final int HEIGHT = 800;
-			final int WIDTH = 800;
-			frame.setSize(HEIGHT, WIDTH);
-			frame.setLayout(new GridLayout(8,8));
-			JButton[][] positions = new JButton[8][8];
-			for(int x = 0; x < 8; x ++)
+		black.add(0, new King(7, 4, 1, 1));// initialization of black pieces
+		black.add(1, new Queen(7, 3, 1, 1));
+		black.add(2, new Bishop(7, 5, 1, 1));
+		black.add(3, new Bishop(7, 2, 1, 2));
+		black.add(4, new Knight(7, 6, 1, 1));
+		black.add(5, new Knight(7, 1, 1, 2));
+		black.add(6, new Rook(7, 7, 1, 1));
+		black.add(7, new Rook(7, 0, 1, 2));
+		black.add(8, new Pawn(6, 4, 1, 1));
+		black.add(9, new Pawn(6, 3, 1, 2));
+		black.add(10, new Pawn(6, 5, 1, 3));
+		black.add(11, new Pawn(6, 2, 1, 4));
+		black.add(12, new Pawn(6, 6, 1, 5));
+		black.add(13, new Pawn(6, 1, 1, 6));
+		black.add(14, new Pawn(6, 7, 1, 7));
+		black.add(15, new Pawn(6, 0, 1, 8));
+		//Board Printing
+		for(int x = 0; x < 8; x++)
+		{
+			for(int y = 0; y < 8; y++)
 			{
-				for(int y = 0; y < 8; y ++)
+				for(int p = 0; p < 16; p++)
 				{
-					
+					if(black.get(p).pos.getX() == x && black.get(p).pos.getY() == y)
+					{
+						System.out.print("B"+black.get(p).getName() + black.get(p).num + " ");
+						p = 17;
+					}
+					else if(white.get(p).pos.getX() == x && white.get(p).pos.getY() == y)
+					{
+						System.out.print("W"+white.get(p).getName() + white.get(p).num + " ");
+						p = 17;
+					}
+					else if(p == 15)
+					{
+						System.out.print("______	");
+					}							
 				}
 			}
-		
+			System.out.println("");
+		}
+		System.out.println("To move a piece, type in move, the coordinates to move to in the X Y order, the name of the piece,\n"
+				 + " and for pieces with multiple instances denotate it with its number: Ex: move bishop 5 4 1\n"
+				 + "To Print out the board, type print board");
 		System.out.println("Enter HELP for help.");
 		String input = "";
 		Scanner scan = new Scanner(System.in);
+		
+		
 		//Turns
-		while(black.get(0).pos.getX() <= -1 || white.get(0).pos.getX() <= -1)
+		boolean b = true;
+		String output = "";
+		while(black.get(0).pos.getX() >= -1 || white.get(0).pos.getX() >= -1)
 		{
 			input = "";
 			//white turn]
+			System.out.println("White Turn");
+			while(b)
 			{
 				System.out.println("Please enter you move: ");
-				input = scan.next();
-				if(input.indexOf("help") != 0)
+				input = scan.nextLine();
+				System.out.println(input);
+				if(input.equalsIgnoreCase("help"))
 				{
-					System.out.println("To move a piece, type in move, the name of the piece, for pieces with multiple instances denotate it with its number,  and the coordinates to move to: /n"
-							+ "Ex: move bishop 1 5 4");
+					System.out.println("To move a piece, type in move, the coordinates to move to in the X Y order, the name of the piece,\n"
+									 + " and for pieces with multiple instances denotate it with its number: Ex: move bishop 5 4 1\n"
+									 + "To Print out the board, type print board");
 				}
-				else if(input.indexOf("move") != 0)
+				else if(input.substring(0, input.indexOf(" ")).equalsIgnoreCase("move"))
 				{
-					if(input.indexOf("queen") != 0)
+					input = input.substring(input.indexOf(' ')+1, input.length());
+					if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("king"))
 					{
-						white.get(Integer.parseInt(input.substring(input.indexOf("queen")+6, input.indexOf("queen")+7))).move(
-							new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("queen")+8, input.indexOf("queen")+9)),
-    						Integer.parseInt(input.substring(input.indexOf("queen")+10, input.indexOf("queen")+11))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.length()));
+						output = white.get(0).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("pawn") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("queen"))
 					{
-						white.get(Integer.parseInt(input.substring(input.indexOf("pawn")+5, input.indexOf("pawn")+6))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("pawn")+7, input.indexOf("pawn")+8)),
-    						Integer.parseInt(input.substring(input.indexOf("pawn")+9, input.indexOf("pawn")+10))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.length()));
+						output = white.get(1).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("king") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("bishop"))
 					{
-						white.get(Integer.parseInt(input.substring(input.indexOf("king")+5, input.indexOf("king")+6))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("king")+7, input.indexOf("king")+8)),
-    						Integer.parseInt(input.substring(input.indexOf("king")+9, input.indexOf("king")+10))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int t = Integer.valueOf(input.substring(0, input.length()));
+						output = white.get(t+1).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("bishop") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("knight"))
 					{
-						white.get(Integer.parseInt(input.substring(input.indexOf("bishop")+7, input.indexOf("bishop")+8))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("bishop")+9, input.indexOf("bishop")+10)),
-    						Integer.parseInt(input.substring(input.indexOf("bishop")+11, input.indexOf("bishop")+12))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int t = Integer.valueOf(input.substring(0, input.length()));
+						output = white.get(t+3).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("knight") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("rook"))
 					{
-						white.get(Integer.parseInt(input.substring(input.indexOf("knight")+7, input.indexOf("knight")+8))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("knight")+9, input.indexOf("knight")+10)),
-    						Integer.parseInt(input.substring(input.indexOf("knight")+11, input.indexOf("knight")+12))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int t = Integer.valueOf(input.substring(0, input.length()));
+						output = white.get(t+5).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("rook") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("pawn"))
 					{
-						white.get(Integer.parseInt(input.substring(input.indexOf("rook")+5, input.indexOf("rook")+6))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("rook")+7, input.indexOf("rook")+8)),
-    						Integer.parseInt(input.substring(input.indexOf("rook")+9, input.indexOf("rook")+10))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						System.out.println(x);
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						System.out.println(y);
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int t = Integer.valueOf(input.substring(0, input.length()));
+						System.out.println(t+7);
+						output = white.get(t+7).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else
-						System.out.println("Piece does not exist. Pieces are /n"
-	    					+ "pawn, queen, king, rook, knight, and rook.");
+				}
+				else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("print board"))
+				{
+					for(int x = 0; x < 8; x++)
+					{
+						for(int y = 0; y < 8; y++)
+						{
+							for(int p = 0; p < 16; p++)
+							{
+								if(black.get(p).pos.getX() == x && black.get(p).pos.getY() == y)
+								{
+									System.out.print("B"+black.get(p).getName() + black.get(p).num + " ");
+									p = 17;
+								}
+								else if(white.get(p).pos.getX() == x && white.get(p).pos.getY() == y)
+								{
+									System.out.print("W"+white.get(p).getName() + white.get(p).num + " ");
+									p = 17;
+								}
+								else if(p == 15)
+								{
+									System.out.print("______	");
+								}							
+							}
+						}
+						System.out.println("");
+					}
 				}
 				else
 					System.out.println("Unknown Command");
 			}
-			//check for piece on top of another
-
-			for(int w = 0; w < 16; w++)
+			b = true;
+			for(int x= 0; x < 8; x++)
 			{
-				for(int b = 0; b < 16; b++)
+				for(int y = 0; y < 8; y++)
 				{
-					if(white.get(w).pos.getPos().equals(black.get(b).pos.getPos()))
+					for(int p = 0; p < 16; p++)
 					{
-						black.get(b).destroy();
+						if(black.get(p).pos.getX() == x && black.get(p).pos.getY() == y)
+						{
+							System.out.print("B"+black.get(p).getName() + black.get(p).num + " ");
+							p = 17;
+						}
+						else if(white.get(p).pos.getX() == x && white.get(p).pos.getY() == y)
+						{
+							System.out.print("W"+white.get(p).getName() + white.get(p).num + " ");
+							p = 17;
+						}
+						else if(p == 15)
+						{
+							System.out.print("______	");
+						}							
 					}
 				}
+				System.out.println("");
 			}
 			input = "";
 			//black turn
+			System.out.println("Black Turn");
+			while(b)
 			{
 				System.out.println("Please enter you move: ");
-				input = scan.next();
-				if(input.indexOf("help") != 0)
+				input = scan.nextLine();
+				if(input.equalsIgnoreCase("help"))
 				{
-					System.out.println("To move a piece, type in move, the name of the piece, for pieces with multiple instances denotate it with its number,  and the coordinates to move to: /n"
-						+ "Ex: move bishop 1 5 4");
+					System.out.println("To move a piece, type in move, the coordinates to move to in the X Y order, the name of the piece,\n"
+									 + " and for pieces with multiple instances denotate it with its number: Ex: move bishop 5 4 1\n"
+									 + "To Print out the board, type print board");
 				}
-				else if(input.indexOf("move") != 0)
+				else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("move"))
 				{
-					if(input.indexOf("queen") != 0)
+					input = input.substring(input.indexOf(' ')+1, input.length());
+					if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("king"))
 					{
-						black.get(Integer.parseInt(input.substring(input.indexOf("queen")+6, input.indexOf("queen")+7))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("queen")+8, input.indexOf("queen")+9)),
-    						Integer.parseInt(input.substring(input.indexOf("queen")+10, input.indexOf("queen")+11))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.length()));
+						output = black.get(0).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("pawn") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("queen"))
 					{
-						black.get(Integer.parseInt(input.substring(input.indexOf("pawn")+5, input.indexOf("pawn")+6))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("pawn")+7, input.indexOf("pawn")+8)),
-    						Integer.parseInt(input.substring(input.indexOf("pawn")+9, input.indexOf("pawn")+10))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.length()));
+						output = black.get(1).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("king") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("bishop"))
 					{
-						black.get(Integer.parseInt(input.substring(input.indexOf("king")+5, input.indexOf("king")+6))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("king")+7, input.indexOf("king")+8)),
-    						Integer.parseInt(input.substring(input.indexOf("king")+9, input.indexOf("king")+10))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int t = Integer.valueOf(input.substring(0, input.length()));
+						output = black.get(t+1).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("bishop") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("knight"))
 					{
-						black.get(Integer.parseInt(input.substring(input.indexOf("bishop")+7, input.indexOf("bishop")+8))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("bishop")+9, input.indexOf("bishop")+10)),
-    						Integer.parseInt(input.substring(input.indexOf("bishop")+11, input.indexOf("bishop")+12))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int t = Integer.valueOf(input.substring(0, input.length()));
+						output = black.get(t+3).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("knight") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("rook"))
 					{
-						black.get(Integer.parseInt(input.substring(input.indexOf("knight")+7, input.indexOf("knight")+8))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("knight")+9, input.indexOf("knight")+10)),
-    						Integer.parseInt(input.substring(input.indexOf("knight")+11, input.indexOf("knight")+12))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int t = Integer.valueOf(input.substring(0, input.length()));
+						output = black.get(t+5).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+						{
+							b = false;
+							System.out.println(output);
+						}
 					}
-					else if(input.indexOf("rook") != 0)
+					else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("pawn"))
 					{
-						black.get(Integer.parseInt(input.substring(input.indexOf("rook")+5, input.indexOf("rook")+6))).move(
-    						new CoordinatePair(Integer.parseInt(input.substring(input.indexOf("rook")+7, input.indexOf("rook")+8)),
-    						Integer.parseInt(input.substring(input.indexOf("rook")+9, input.indexOf("rook")+10))));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int x = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int y = Integer.valueOf(input.substring(0, input.indexOf(' ')));
+						input = input.substring(input.indexOf(' ')+1, input.length());
+						int t = Integer.valueOf(input.substring(0, input.length()));
+						output = black.get(t+7).move(new CoordinatePair(x,y));
+						if(output.equals("IMPROPER MOVEMENT!"))
+							System.out.println(output);
+						else
+							b = false;
+							System.out.println(output);
 					}
-					else
-						System.out.println("Piece does not exist. Pieces are /n"
-	    					+ "pawn, queen, king, rook, knight, and rook.");
+				}
+				else if(input.substring(0, input.indexOf(' ')).equalsIgnoreCase("print board"))
+				{
+					for(int x = 0; x < 8; x++)
+					{
+						for(int y = 0; y < 8; y++)
+						{
+							for(int p = 0; p < 16; p++)
+							{
+								if(black.get(p).pos.getX() == x && black.get(p).pos.getY() == y)
+								{
+									System.out.print("B"+black.get(p).getName() + black.get(p).num + " ");
+									p = 17;
+								}
+								if(white.get(p).pos.getX() == x && white.get(p).pos.getY() == y)
+								{
+									System.out.print("W"+white.get(p).getName() + white.get(p).num + " ");
+									p = 17;
+								}
+								else if(p == 15)
+								{
+									System.out.print("______	");
+								}							
+							}
+						}
+						System.out.println("");
+					}
 				}
 				else
 					System.out.println("Unknown Command");
 			}
-			for(int b = 0; b < 16; b++)
+			b = true;
+			for(int x = 0; x < 8; x++)
 			{
-				for(int w = 0; w < 16; w++)
+				for(int y = 0; y < 8; y++)
 				{
-					if(black.get(b).pos.getPos().equals(white.get(w).pos.getPos()))
+					for(int p = 0; p < 16; p++)
 					{
-						white.get(w).destroy();
+						if(black.get(p).pos.getX() == x && black.get(p).pos.getY() == y)
+						{
+							System.out.print("B"+black.get(p).getName() + black.get(p).num + " ");
+							p = 17;
+						}
+						if(white.get(p).pos.getX() == x && white.get(p).pos.getY() == y)
+						{
+							System.out.print("W"+white.get(p).getName() + white.get(p).num + " ");
+							p = 17;
+						}
+						else if(p == 15)
+						{
+							System.out.print("______	");
+						}							
 					}
 				}
+				System.out.println("");
 			}
 		}
 	}

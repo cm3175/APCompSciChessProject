@@ -3,10 +3,9 @@ import java.util.Random;
 
 public class Bishop extends ChessPiece
 {
-	private final String NAME = "Bishop";
-	public Bishop(int x, int y, int t)
+	public Bishop(int x, int y, int t, int n)
 	{
-		super(x,y,t);
+		super(x,y,t,n,"Bishop");
 	}
 	public void destroy(){
 		Random r = new Random();
@@ -20,12 +19,12 @@ public class Bishop extends ChessPiece
 			if(this.pos.getX() + x == p.getX() && this.pos.getY() + x == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 			else if(this.pos.getX() + x == p.getX() && this.pos.getY() + x == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 		}
 		return "IMPROPER MOVMENT!";

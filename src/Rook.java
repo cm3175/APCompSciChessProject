@@ -2,10 +2,9 @@ import java.util.Random;
 
 public class Rook extends ChessPiece
 {
-	private final String NAME = "Rook";
 	public Rook(int x, int y, int t, int n)
 	{
-		super(x,y,n);
+		super(x,y,t,n,"Rook");
 	}
 	public String move(CoordinatePair p)
 	{
@@ -15,22 +14,22 @@ public class Rook extends ChessPiece
 			if(this.pos.getX() == p.getX() && this.pos.getY() + x == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 			else if(this.pos.getX() + x == p.getX() && this.pos.getY() == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 			else if(this.pos.getX() - x == p.getX() && this.pos.getY() == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 			else if(this.pos.getX() == p.getX() && this.pos.getY() - x == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 		}
 		return "IMPROPER MOVMENT!";

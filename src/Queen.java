@@ -2,10 +2,9 @@ import java.util.Random;
 
 public class Queen extends ChessPiece
 {
-	private final String NAME = "Queen";
-	public Queen(int x, int y, int t)
+	public Queen(int x, int y, int t, int n)
 	{
-		super(x,y,t);
+		super(x,y,t,n,"Queen");
 	}
 	public void destroy(){
 		Random r = new Random();
@@ -19,32 +18,32 @@ public class Queen extends ChessPiece
 			if(this.pos.getX() == p.getX() && this.pos.getY() + x == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 			else if(this.pos.getX() + x == p.getX() && this.pos.getY() == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 			else if(this.pos.getX() - x == p.getX() && this.pos.getY() == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 			else if(this.pos.getX() == p.getX() && this.pos.getY() - x == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 			else if(this.pos.getX() + x == p.getX() && this.pos.getY() + x == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 			else if(this.pos.getX() + x == p.getX() && this.pos.getY() + x == p.getY())
 			{
 				super.pos = p;
-				return NAME + " to " + pos.getPos();
+				return getName() + " to " + pos.getPos();
 			}
 		}
 		return "IMPROPER MOVMENT!";
