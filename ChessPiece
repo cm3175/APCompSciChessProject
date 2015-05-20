@@ -1,5 +1,0 @@
-public interface ChessPiece{
-  public void move(CoordinatePair p);
-  public void attack(CoordinatePair p);
-  public void destroy();
-}
